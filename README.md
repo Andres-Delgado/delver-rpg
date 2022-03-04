@@ -1,4 +1,7 @@
 # __delver-rpg__
+- [tutorial](https://tutorial.vcokltfre.dev)
+- [emoji unicode](https://www.fileformat.info/info/unicode/char/search.htm)
+
 `A semi-idle RPG bot for discord`
 - Send you character on timed dungeons
 - get loot
