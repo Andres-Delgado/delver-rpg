@@ -10,4 +10,5 @@ intents.members = True
 
 bot = commands.Bot(command_prefix='.', intents=intents)
 bot.load_extension("commands.somecommands")
+# bot.load_extension('commands.player_commands.py')
 bot.run(getenv('TOKEN'))

@@ -4,7 +4,6 @@ import time
 import discord
 from discord.ext import commands
 
-
 class SomeCommands(commands.Cog):
   """some simple commands"""
 
@@ -54,6 +53,23 @@ class SomeCommands(commands.Cog):
 
     if str(reaction.emoji) == '\u2705':
       await ctx.send('ayyee')
+
+  @commands.command('createchar')
+  async def createchar(self, ctx: commands.Context, *, text: str):
+    """create character"""
+    embed = discord.Embed(title=text, description='Choose your class!')
+    embed.add_field(name='\u2694 Warrior', value='Party Buff: dmg reduction', inline=False)
+    embed.add_field(name='🧙 Mage', value='Party Buff: amplify consumables', inline=False)
+    embed.add_field(name='🗡️ Rogue', value='Party Buff: dmg buff', inline=False)
+    embed.add_field(name='🏹 Ranger', value='Party Buff: reduce stamina consumption', inline=False)
+    embed.add_field(name='🐺 Furry', value='Party Buff: cuddles uwu', inline=False)
+    message = await ctx.send(embed=embed)
+
+    await message.add_reaction('\u2694')
+    await message.add_reaction('🧙')
+    await message.add_reaction('🗡️')
+    await message.add_reaction('🏹')
+    await message.add_reaction('🐺')
 
 def setup(bot: commands.Bot):
   bot.add_cog(SomeCommands(bot))
