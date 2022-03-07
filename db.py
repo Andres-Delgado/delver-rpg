@@ -1,18 +1,32 @@
-from wsgiref.handlers import IISCGIHandler
 import psycopg2
-
-DB_NAME = 'mdhkissn'
-DB_USER = 'mdhkissn'
-DB_PASS = 'b_KE2vU2xfkvwVQ090hff5GHOrz2tPMd'
-DB_HOST = 'jelani.db.elephantsql.com'
-DB_PORT = '5432'
+from dotenv import load_dotenv
+from os import getenv
+from player.player import Player
 
 
-conn = psycopg2.connect(database=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST, port=DB_PORT)
+
+def create_player(player: Player):
+  # check unique name
+  # users can only have 1 of each class
+  
+  return 'hey'  
+  
+
+
+load_dotenv()
+
+dbName = getenv('DB_NAME')
+dbUser = getenv('DB_USER')
+dbPass = getenv('DB_PASS')
+dbHost = getenv('DB_HOST')
+conn = psycopg2.connect(database=dbName, user=dbUser, password=dbPass, host=dbHost)
 
 cur = conn.cursor()
 
-cur.execute("INSERT INTO Players (id, name, class) VALUES (%s, %s, %s)", (1, 'BussyBoy', 'Ranger'))
+# "" - string wrapped in double quotes is case sensative
+# '' - single quotes in case insensitive
+
+cur.execute('INSERT INTO "Players" (name, class) VALUES (%s, %s)', ("ayye", "Ranger"))
 
 
 conn.commit()

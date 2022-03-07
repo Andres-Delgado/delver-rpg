@@ -1,6 +1,5 @@
 import asyncio
 import time
-
 import discord
 from discord.ext import commands
 
@@ -62,14 +61,14 @@ class SomeCommands(commands.Cog):
     embed.add_field(name='🧙 Mage', value='Party Buff: amplify consumables', inline=False)
     embed.add_field(name='🗡️ Rogue', value='Party Buff: dmg buff', inline=False)
     embed.add_field(name='🏹 Ranger', value='Party Buff: reduce stamina consumption', inline=False)
-    embed.add_field(name='🐺 Furry', value='Party Buff: cuddles uwu', inline=False)
+    # embed.add_field(name='🐺 Furry', value='Party Buff: cuddles uwu', inline=False)
     message = await ctx.send(embed=embed)
 
     await message.add_reaction('\u2694')
     await message.add_reaction('🧙')
     await message.add_reaction('🗡️')
     await message.add_reaction('🏹')
-    await message.add_reaction('🐺')
+    # await message.add_reaction('🐺')
 
 def setup(bot: commands.Bot):
   bot.add_cog(SomeCommands(bot))

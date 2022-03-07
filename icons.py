@@ -1,0 +1,5 @@
+WARRIOR = '\u2694'
+MAGE = '🧙'
+ROGUE = '🗡️'
+RANGER = '🏹'
+WOLF = '🐺'
