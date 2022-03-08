@@ -1,4 +1,5 @@
 # __delver-rpg__
+- [discord.py docs](https://discordpy.readthedocs.io/en/stable/api.html)
 - [tutorial](https://tutorial.vcokltfre.dev)
 - [emoji unicode](https://www.fileformat.info/info/unicode/char/search.htm)
 
