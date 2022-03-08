@@ -15,4 +15,4 @@ bot = commands.Bot(command_prefix='.', intents=intents)
 bot.load_extension('commands.playercommands')
 bot.run(getenv('TOKEN'))
 
-# TODO: make exception handler
+# TODO: EXCEPTION HANDLER VS COMMAND SPECIFIC

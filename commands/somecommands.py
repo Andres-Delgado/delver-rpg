@@ -23,52 +23,12 @@ class SomeCommands(commands.Cog):
     """set bot status"""
     await self.bot.change_presence(activity=discord.Game(name=text))
 
+  # TODO: EXAMPLE COMMAND SPECIFIC ERROR HANDLING
   @setstatus.error
   async def setstatus_error(self, ctx: commands.Context, error):
     if isinstance(error, commands.CommandOnCooldown):
       await ctx.send(f'`.setstatus` on cooldown: {round(error.retry_after)} seconds', delete_after=5)
       print(error)
-
-  @commands.command('status')
-  async def status(self, ctx: commands.Context):
-    embed = discord.Embed(title='Current Status', description='Currently out in a dungeon!')
-    embed.set_author(name="SoggyFroggy")
-    embed.add_field(name="Field 1", value="Not an inline field!", inline=False)
-    embed.add_field(name="Field 2", value="An inline field!", inline=True)
-    embed.add_field(name="Field 3", value="Look I'm inline with field 2!", inline=True)
-    embed.set_footer(text="Wow! A footer!", icon_url="https://cdn.discordapp.com/emojis/754736642761424986.png")
-
-    message = await ctx.send(embed=embed)
-    await message.add_reaction('\u2705')
-    await message.add_reaction('\u274C')
-
-    check = lambda r, u: u == ctx.author and str(r.emoji) in '\u2705\u274C'
-
-    try:
-      reaction, user = await self.bot.wait_for('reaction_add', check=check, timeout=30)
-    except asyncio.TimeoutError:
-      await ctx.send('too long to respond')
-      return
-
-    if str(reaction.emoji) == '\u2705':
-      await ctx.send('ayyee')
-
-  @commands.command('createchar')
-  async def createchar(self, ctx: commands.Context, *, text: str):
-    """create character"""
-    embed = discord.Embed(title=text, description='Choose your class!')
-    embed.add_field(name='\u2694 Warrior', value='Party Buff: dmg reduction', inline=False)
-    embed.add_field(name='🧙 Mage', value='Party Buff: amplify consumables', inline=False)
-    embed.add_field(name='🗡️ Rogue', value='Party Buff: dmg buff', inline=False)
-    embed.add_field(name='🏹 Ranger', value='Party Buff: reduce stamina consumption', inline=False)
-    # embed.add_field(name='🐺 Furry', value='Party Buff: cuddles uwu', inline=False)
-    message = await ctx.send(embed=embed)
-
-    await message.add_reaction('\u2694')
-    await message.add_reaction('🧙')
-    await message.add_reaction('🗡️')
-    await message.add_reaction('🏹')
-    # await message.add_reaction('🐺')
 
 def setup(bot: commands.Bot):
   bot.add_cog(SomeCommands(bot))

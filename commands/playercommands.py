@@ -11,13 +11,13 @@ class PlayerUtils():
     self.bot = bot
     self.ctx = ctx
 
+  # TODO: OPTIMIZE THIS PLS
   def check(self, ctx: commands.Context):
     return lambda r, u: u == ctx.author and str(r.emoji) \
       in icons.WARRIOR + icons.MAGE + icons.ROGUE + icons.RANGER + icons.X
 
   async def wait_for_reaction(self, message: discord.message, name: str, timeout: int):
-    """ get user reaction
-        returns None if timeout or invalid reaction"""
+    """get user reaction, returns None if timeout or invalid reaction"""
 
     try:
       # wait for reaction
@@ -37,7 +37,7 @@ class PlayerUtils():
     return None
 
   async def select_character_embed(self, ctx: commands.Context, name: str):
-    """embed menu for character selection"""
+    """menu for character selection"""
 
     # build embed
     embed = discord.Embed(title='%s - %s' % (ctx.author.name, name), description='Choose your class!', color=Color.green())
@@ -58,7 +58,7 @@ class PlayerUtils():
     return message, reaction
 
   async def confirm_character_embed(self, ctx: commands.Context, message: discord.message, name: str, reaction: icons):
-    """embed menu for character confirmation"""
+    """menu for character confirmation"""
 
     # build embed
     embed = discord.Embed(title='%s - %s' % (ctx.author.name, name), color=Color.green())
@@ -77,8 +77,7 @@ class PlayerUtils():
     return message, reaction
 
   async def character_creation(self, bot: commands.Bot, ctx: commands.Context, name: str):
-    """ loops through character creation embed menus
-        returns user's selected class"""
+    """loops through character creation embed menus, returns user's selected class"""
 
     # TODO: CREATE LOOP
 
@@ -98,7 +97,6 @@ class PlayerUtils():
 
     return None
 
-
 # NEED SOMEONE TO TEST REACTIONS IN BETWEEN STEPS
 class PlayerCommands(commands.Cog):
   """Player specific commands"""
@@ -106,8 +104,8 @@ class PlayerCommands(commands.Cog):
   def __init__(self, bot: commands.Bot):
     self.bot = bot
 
-  @commands.command('createchar')
-  async def createchar(self, ctx: commands.Context, *, name: str):
+  @commands.command('create')
+  async def create(self, ctx: commands.Context, *, name: str):
     """create character"""
 
     # create character
@@ -120,7 +118,6 @@ class PlayerCommands(commands.Cog):
 
     # TODO: INSTANTIATE AND SAVE CHARACTER
     # TODO: CREATE CHARACTER SUMMARY EMBED
-
 
 def setup(bot: commands.Bot):
   bot.add_cog(PlayerCommands(bot))
