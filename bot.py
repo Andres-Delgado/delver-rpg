@@ -16,3 +16,5 @@ bot.load_extension('commands.playercommands')
 bot.run(getenv('TOKEN'))
 
 # TODO: EXCEPTION HANDLER VS COMMAND SPECIFIC
+
+# launch settings "console": "internalConsole",

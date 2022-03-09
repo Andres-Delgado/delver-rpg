@@ -1,7 +1,9 @@
 # __delver-rpg__
+- TODO: CONVERT TO [PYCORD](https://github.com/Pycord-Development/pycord)
 - [discord.py docs](https://discordpy.readthedocs.io/en/stable/api.html)
 - [tutorial](https://tutorial.vcokltfre.dev)
 - [emoji unicode](https://www.fileformat.info/info/unicode/char/search.htm)
+- [unicode search](https://unicode-table.com)
 
 `A semi-idle RPG bot for discord`
 - Send you character on timed dungeons
@@ -17,6 +19,8 @@
 - some need a specific class
 - can save 1 dungeon for later (upgrade)
 - will reward a chest (armor/wep/consumable)
+- deplete stamina
+- regen stamina (x/hour) after dungeon 
 
 ## __Classes__
 ### Warrior
@@ -60,6 +64,17 @@
 ```.rest```
 - sleep for 8 hours to regain hp/stam
 
-```.inspect [characterName]```
+```.inspect <characterName>```
 - view summary for all characters
 - view full details of a specific character
+
+```.item <item>```
+- view details of item
+
+```.char [-full] [-url <urlString>]```
+- view short summary of stats and equiped items
+- -full, view full summary of character
+- -url <urlString>, set pfp 
+
+```.helpMe```
+- sends a direct message to user with **.help** summary

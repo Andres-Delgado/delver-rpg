@@ -1,6 +1,7 @@
 class Player:
 
   def __init__(self, user_id: str, name: str, health: int, stamina: int, armor: int):
+    # self.id
     self.user_id = user_id
     self.name = name
     self.health_max = health
@@ -13,4 +14,4 @@ class Player:
     self.gold = 10
     self.experience_max = 100
     self.experience = 0
-    # self.id
+    self.url = None
