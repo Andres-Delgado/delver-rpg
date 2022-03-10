@@ -174,6 +174,8 @@ class PlayerCommands(commands.Cog):
   async def create(self, ctx: commands.Context, name: str):
     """create character"""
 
+    # TODO: delete user .create command from channel
+
     # create character
     player_utils = PlayerUtils(self.bot, ctx, name)
     reaction = await player_utils.character_creation()
