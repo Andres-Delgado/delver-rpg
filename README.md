@@ -1,19 +1,18 @@
-# __delver-rpg__
-- TODO: CONVERT TO [PYCORD](https://github.com/Pycord-Development/pycord)
+# delver-rpg
+- __TODO: CONVERT TO [PYCORD](https://github.com/Pycord-Development/pycord)__
+- [DB Design](https://stackoverflow.com/questions/1292577/designing-tables-for-storing-various-requirements-and-stats-for-multiplayer-game)
 - [discord.py docs](https://discordpy.readthedocs.io/en/stable/api.html)
-- [tutorial](https://tutorial.vcokltfre.dev)
-- [emoji unicode](https://www.fileformat.info/info/unicode/char/search.htm)
 - [unicode search](https://unicode-table.com)
+- [emoji unicode](https://www.fileformat.info/info/unicode/char/search.htm)
 
 `A semi-idle RPG bot for discord`
-- Send you character on timed dungeons
+- Send your character on timed dungeons
 - get loot
-- buy/trade armor, weapons, potions
+- but items at [town store](#town-store) 
 
-## __Dungeons__
-- __character can die__
+## Dungeons
+- __character can die if not prepared__
 - have availability timer
-- random affixes
 - solo dungeons always available
 - chance to have 2-4 player dungeons
 - some need a specific class
@@ -22,9 +21,30 @@
 - deplete stamina
 - regen stamina (x/hour) after dungeon 
 
-## __Classes__
+### Affixes
+- Many Monsters - better chance for gold and consumables
+- Big Boys (Bosses) - better chance for rare items
+- RP Quest - better experience
+
+### Requirments
+- level
+- group
+  - random class
+  - random stat check
+
+## Town Store
+- health/stam potions always available
+- chance to have buff potions (+x max health/stam)
+- always have random green items
+- chance to have blue items
+- buy upgrades - (weapons/armor/passives)
+
+## Trading
+- can trade items and gold
+
+## Classes
 ### Warrior
--  more health/armor
+- better armor
 - PartyBuff: dmg reduction
 
 ### Mage
@@ -36,20 +56,29 @@
 - PartyBuff: increase party dmg
 
 ### Ranger
-- Utility
+- better health, utility
 - PartyBuff: reduce stamina consumption
 
-## __Items__
-### Potions (primary/secondary)
+## Leveling
+- players choose what stats to increase
+
+### Stats
 - health
-- stamina
+- stam - limits dungeons
+- armor 
+  - determined by equiped
+  - damage mitigation
+- dmg - determined by weapon
 
-### Gear
-- armor
-- weapon
-- ring
 
-## __Commands__
+## Commands
+
+```.menu```
+- core ui for interaction
+
+```.create <character_name>```
+- character creation
+
 ```.status```
 - check status of dungeon
 - can interact for better results
@@ -61,10 +90,11 @@
 ```.inventory```
 - view/equip items
 
-```.rest```
-- sleep for 8 hours to regain hp/stam
+```.rest x```
+- sleep for x hours to regain hp/stam
+- oversleeping will give rested xp
 
-```.inspect <characterName>```
+```.inspect <character_name>```
 - view summary for all characters
 - view full details of a specific character
 
@@ -77,4 +107,9 @@
 - -url <urlString>, set pfp 
 
 ```.helpMe```
-- sends a direct message to user with **.help** summary
+- sends a direct message to user with `.help` summary
+
+
+## Future updates
+- crafting
+- auction house
