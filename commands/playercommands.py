@@ -1,10 +1,15 @@
 import asyncio
+from ctypes import Union
 import discord
 from discord import Color
 from discord.ext import commands
 
 import constants.icons as icons
+from player.mage import Mage
 from player.player import Player
+from player.ranger import Ranger
+from player.rogue import Rogue
+from player.warrior import Warrior
 
 class PlayerUtils():
   def __init__(self, bot: commands.Bot, ctx: commands.Context, name: str, message: discord.Message = None):
@@ -146,22 +151,18 @@ class PlayerUtils():
     await self.message.clear_reactions()
     await self.message.edit(embed=embed)
 
-  def instantiate_player(self, reaction: icons) -> Player:
-    class_name = ''
-    hp, stam, armor = 20, 20, 10
-
+  def instantiate_player(self, reaction: icons) -> Union[Warrior, Mage, Rogue, Ranger]:
     if str(reaction) == str(icons.WARRIOR):
-      class_name = 'WARRIOR'
-      armor = 15
+      return Warrior(self.ctx.author.id, self.name)
     elif str(reaction) == str(icons.MAGE):
-      class_name = 'MAGE'
+      return Mage(self.ctx.author.id, self.name)
     elif str(reaction) == str(icons.ROGUE):
-      class_name = 'ROGUE'
+      return Rogue(self.ctx.author.id, self.name)
     elif str(reaction) == str(icons.RANGER):
-      class_name = 'RANGER'
-      stam = 25
-
-    return Player(self.ctx.author.id, class_name, self.name, hp, stam, armor)
+      return Ranger(self.ctx.author.id, self.name)
+    
+    # should be unreachable
+    return None
 
 # NEED SOMEONE TO TEST REACTIONS IN BETWEEN STEPS
 class PlayerCommands(commands.Cog):
@@ -173,6 +174,8 @@ class PlayerCommands(commands.Cog):
   @commands.command('create')
   async def create(self, ctx: commands.Context, name: str):
     """create character"""
+
+    # check unique name
 
     # TODO: delete user .create command from channel
 
