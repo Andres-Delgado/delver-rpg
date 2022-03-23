@@ -38,7 +38,7 @@ of a feature that has lots of changes and affected files.
 You would instead want to make smaller PRs for each step of implementation.
 ### Example: working on .store command
 - PR for setting up `.store` command and maybe initial embed 
-- PR for some functionality for initial embed
+- PR with some functionality for initial embed
 - PR for purchasing an item and going to a new embed
 - PR for selling and item and going to new embed
 - etc
@@ -108,7 +108,7 @@ git pull upstream main
 
 if you try `git pull` in a local branch without adding `upstream main`,
 it will look for your local branch name in the github repo and try to pull from it.
-if it only exists locally and not in guthub, it will fail.
+if it only exists locally and not in github, it will fail.
 so we need to specify to pull from the `upstream main` branch
 ___
 
@@ -215,7 +215,7 @@ fix merge conflicts, if any
 - **probably have to show you this step in person**
 ___
 
-## Pushing changes to github
+## Pushing local branch to github
 ### Example
 you are working in branch `store-commands` and are ready to push
 that branch to github
@@ -240,16 +240,41 @@ commit the changes with a message
 git commit -m "added more options to store"
 ```
 
-push to github
-- if you have not pushed you branch to github yet
-  ```
-  git push -u origin store-commands
-  ```
-- otherwise
-  ```
-  git push
-  ```
+push branch to github
+```
+git push -u origin store-commands
+```
 ___
+
+## Adding commits to a branch and/or Pull Request
+### Example
+you [pushed your branch to github](#pushing-changes-to-github) and submitted a PR,
+but someone said your code was shit
+and you need to change some of your implementation
+
+### Process
+implement suggested changes
+
+stage files to index
+```
+git add .
+```
+```
+git add path/to/file.py
+```
+
+commit your changes with a helpful message
+```
+git commit -m "fixing bug"
+```
+
+push to github
+```
+git push
+```
+this push will automatically update your PR with the new commit(s) 
+___
+
 ## Deleting local branch after it's merged in github
 ### Example
 you finished working on branch `store-commands-hotfix`,
@@ -272,7 +297,6 @@ pull to sync latest changes
 ```
 git pull upstream main
 ```
-
 ___
 
 ## Switching branches when you have a "dirty" branch
