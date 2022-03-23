@@ -14,6 +14,9 @@ the typical workflow is to
 - submit a Pull Request (PR) in github
   - this is a request to merge your branch into the main branch
   - allows for others to review and accept your changes
+- merge your branch into main (from the PR)
+- (optional) delete that branch from github
+  - only if you're finished working on that branch 
 
 ~~~
   |
@@ -35,7 +38,7 @@ of a feature that has lots of changes and affected files.
 You would instead want to make smaller PRs for each step of implementation.
 ### Example: working on .store command
 - PR for setting up `.store` command and maybe initial embed 
-- PR for some functionality with initial embed
+- PR for some functionality for initial embed
 - PR for purchasing an item and going to a new embed
 - PR for selling and item and going to new embed
 - etc
@@ -246,6 +249,30 @@ push to github
   ```
   git push
   ```
+___
+## Deleting local branch after it's merged in github
+### Example
+you finished working on branch `store-commands-hotfix`,
+[pushed it to github](#pushing-changes-to-github),
+submitted a PR, merged the PR,
+and no longer need the branch in your local repo. 
+
+### Process
+switch back to your local main branch
+```
+git checkout main
+```
+
+delete the old branch
+```
+git branch -d store-commands-hotfix
+```
+
+pull to sync latest changes
+```
+git pull upstream main
+```
+
 ___
 
 ## Switching branches when you have a "dirty" branch
