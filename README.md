@@ -1,14 +1,15 @@
 # delver-rpg
-- __TODO: CONVERT TO [PYCORD](https://github.com/Pycord-Development/pycord)__
-- [DB Design](https://stackoverflow.com/questions/1292577/designing-tables-for-storing-various-requirements-and-stats-for-multiplayer-game)
+__CONVERT TO [PYCORD](https://github.com/Pycord-Development/pycord)__
 - [discord.py docs](https://discordpy.readthedocs.io/en/stable/api.html)
+- [psycopg2 docs](https://www.psycopg.org/docs/)
+- [DB Design](https://stackoverflow.com/questions/1292577/designing-tables-for-storing-various-requirements-and-stats-for-multiplayer-game)
 - [unicode search](https://unicode-table.com)
 - [emoji unicode](https://www.fileformat.info/info/unicode/char/search.htm)
 
-`A semi-idle RPG bot for discord`
+`A semi-idle RPG discord bot for my friends`
 - Send your character on timed dungeons
 - get loot
-- but items at [town store](#town-store) 
+- buy items at [town store](#town-store)
 
 ## Dungeons
 - __character can die if not prepared__
@@ -16,15 +17,21 @@
 - solo dungeons always available
 - chance to have 2-4 player dungeons
 - some need a specific class
-- can save 1 dungeon for later (upgrade)
-- will reward a chest (armor/wep/consumable)
+- can save 1 dungeon for later (upgrade at store)
 - deplete stamina
-- regen stamina (x/hour) after dungeon 
+- regen stamina (x/hour) after dungeon
+- rewards a loot chest (armor/wep/consumable)
 
 ### Affixes
 - Many Monsters - better chance for gold and consumables
 - Big Boys (Bosses) - better chance for rare items
 - RP Quest - better experience
+- Class Quest
+  - unlocks class abilities at shop
+  - if unlocked, reduces cost?
+- Story Quest
+  - unlocked at various milestones (e.g lv 5/10/15)
+  - __difficult__
 
 ### Requirments
 - level
@@ -32,12 +39,39 @@
   - random class
   - random stat check
 
+### Combat (idk about this yet tbh)
+- player can choose to participate in dungeon
+  - x times per dungeon
+  - example: in a 4hour dungeon
+    - once before 2hr mark
+    - again after 2hr mark
+- embed will have reactions to
+  - dodge left/right
+  - attack/use special ability
+  - block
+  - use consumable
+  - run
+- enemy/player actions will happen simultaneously
+- enemy attack patterns can be learned
+- will give better rewards then if dungeon was left idle
+
 ## Town Store
-- health/stam potions always available
-- chance to have buff potions (+x max health/stam)
-- always have random green items
-- chance to have blue items
-- buy upgrades - (weapons/armor/passives)
+- items refresh every x hours
+- always available
+  - health/stam potions
+  - random green items
+  - dungeon refresh consumable
+- chance
+  - ?? buff potions (+x max health/stam)
+  - blue items
+- purchase upgrades
+  - store upgrades
+  - class special abilties
+    - for when interacting with dungeon
+  - weapons/armor
+  - passives
+    - save +1 additional dungeon for later
+    - recover +1 hp/stam per hour
 
 ## Trading
 - can trade items and gold
@@ -46,18 +80,23 @@
 ### Warrior
 - better armor
 - PartyBuff: dmg reduction
+- prioritize dungeons with small monsters bc of armor
 
-### Mage
+### Mage (rename to Alchemist?)
 - better healing and use of potions
 - PartyBuff: amplify potions
+- flexible on dungeon length/type
+- dungeon preference depends on consumables equiped
 
 ### Rogue
-- more damage
+- better damage
 - PartyBuff: increase party dmg
+- prioritize short dungeons bc low hp/armor
 
 ### Ranger
 - better health, utility
 - PartyBuff: reduce stamina consumption
+- prioritize longer dungeons bc better stam
 
 ## Leveling
 - players choose what stats to increase
@@ -65,11 +104,10 @@
 ### Stats
 - health
 - stam - limits dungeons
-- armor 
+- armor
   - determined by equiped
   - damage mitigation
 - dmg - determined by weapon
-
 
 ## Commands
 
@@ -104,7 +142,7 @@
 ```.char [-full] [-url <urlString>]```
 - view short summary of stats and equiped items
 - -full, view full summary of character
-- -url <urlString>, set pfp 
+- -url <urlString>, set pfp
 
 ```.helpMe```
 - sends a direct message to user with `.help` summary
@@ -112,4 +150,10 @@
 
 ## Future updates
 - crafting
+  - dungeon rewards have chance to drop gathering dungeon map
+  - new dungeon with gathering affix - more mats
 - auction house
+- achievements
+- metadata stats
+  - dungeons completed
+  - total gold spent
