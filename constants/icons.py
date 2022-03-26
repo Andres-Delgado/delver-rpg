@@ -13,6 +13,7 @@ ROGUE_URL = 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/64264eb0-
 MAGE_URL = 'https://i.pinimg.com/originals/ac/8c/6e/ac8c6eb3657b30bdbbce2365c630309e.png'
 WARRIOR_URL = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw5Z6vVmphRATRJRexL32kF147guQRslt4bw&usqp=CAU'
 RANGER_URL = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrzV0Uk0BDsY17pCN5w1w5ewM2U-SaBnOVxA&usqp=CAU'
+STORE_URL = 'https://p.kindpng.com/picc/s/376-3761372_kermit-clorox-meme-hd-png-download.png'
 
 WHITE_SM = '\u25ab'
 WHITE_SM_MED = '\u25fd'
@@ -23,4 +24,8 @@ GREEN = '🟩'
 BLUE = '🟦'
 PURPLE = '🟪'
 ORANGE ='🟧'
-RED ='🟥'
+RED = '🟥'
+
+ONE = '1️⃣'
+TWO = '2️⃣'
+THREE = '3️⃣'
