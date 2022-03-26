@@ -39,6 +39,7 @@ class StoreCommands(commands.Cog):
   async def create(self, ctx: commands.Context):
     """open shop"""
 
+    # show store
     store = StoreUtils()
     await store.show_store_embed(ctx)
 
