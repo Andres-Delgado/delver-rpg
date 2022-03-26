@@ -1,5 +1,4 @@
 import asyncio
-from ctypes import Union
 import discord
 from discord import Color
 from discord.ext import commands
@@ -132,7 +131,7 @@ class PlayerUtils():
     """display character summary embed"""
 
     embed = discord.Embed(\
-      title='%s %s - lv %s' % (player.clas_icon, player.name, player.level), \
+      title='%s %s - lv %s' % (player.class_icon, player.name, player.level), \
       description=' %s Exp - %s/%s' % (player.class_name, player.experience, player.experience_max), \
       color=Color.light_grey()
     )
@@ -151,7 +150,7 @@ class PlayerUtils():
     await self.message.clear_reactions()
     await self.message.edit(embed=embed)
 
-  def instantiate_player(self, reaction: icons) -> Union[Warrior, Mage, Rogue, Ranger]:
+  def instantiate_player(self, reaction: icons) -> Player:
     if str(reaction) == str(icons.WARRIOR):
       return Warrior(self.ctx.author.id, self.name)
     elif str(reaction) == str(icons.MAGE):
@@ -160,7 +159,7 @@ class PlayerUtils():
       return Rogue(self.ctx.author.id, self.name)
     elif str(reaction) == str(icons.RANGER):
       return Ranger(self.ctx.author.id, self.name)
-    
+
     # should be unreachable
     return None
 

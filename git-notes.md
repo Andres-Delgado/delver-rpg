@@ -7,7 +7,7 @@ ___
 
 ## General Dev Workflow
 the typical workflow is to
-- "branch" off of main 
+- "branch" off of main
 - work on changes in your local branch
 - commit your changes on your branch
 - push that branch to github
@@ -16,7 +16,7 @@ the typical workflow is to
   - allows for others to review and accept your changes
 - merge your branch into main (from the PR)
 - (optional) delete that branch from github
-  - only if you're finished working on that branch 
+  - only if you're finished working on that branch
 
 ~~~
   |
@@ -37,7 +37,7 @@ Try not to submit a PR with full implementation
 of a feature that has lots of changes and affected files.
 You would instead want to make smaller PRs for each step of implementation.
 ### Example: working on .store command
-- PR for setting up `.store` command and maybe initial embed 
+- PR for setting up `.store` command and maybe initial embed
 - PR with some functionality for initial embed
 - PR for purchasing an item and going to a new embed
 - PR for selling and item and going to new embed
@@ -86,9 +86,9 @@ git branch -d branch-name-here
 ```
 - must be on a different branch to delete
 
-if there are merging/out of sync issues 
+if there are merging/out of sync issues
 then the delete branch command might fail,
-you can instead use `-D` instead of `-d` 
+you can instead use `-D` instead of `-d`
 to force delete the branch.
 **only do this if you are sure you don't need that branch anymore**
 ___
@@ -125,7 +125,7 @@ but this is good to know anyway_
 git add .
 ```
 
-### stage a specific file 
+### stage a specific file
 ```
 git add path/to/file
 ```
@@ -205,7 +205,7 @@ git stash
 ```
 pull from the main branch
 ```
-git pull upstream main
+git pull
 ```
 reapply stashed changes
 ```
@@ -223,10 +223,10 @@ that branch to github
 ### Process
 make sure you are
 [up to date](#pulling-when-you-have-a-"dirty"-branch)
-with upstream `main` 
+with upstream `main`
 
 stage files you want to commit
-- to stage all files 
+- to stage all files
   ```
   git add .
   ```
@@ -272,7 +272,7 @@ push to github
 ```
 git push
 ```
-this push will automatically update your PR with the new commit(s) 
+this push will automatically update your PR with the new commit(s)
 ___
 
 ## Deleting local branch after it's merged in github
@@ -280,7 +280,7 @@ ___
 you finished working on branch `store-commands-hotfix`,
 [pushed it to github](#pushing-changes-to-github),
 submitted a PR, merged the PR,
-and no longer need the branch in your local repo. 
+and no longer need the branch in your local repo.
 
 ### Process
 switch back to your local main branch
@@ -302,11 +302,11 @@ ___
 ## Switching branches when you have a "dirty" branch
 ### Example
 you are working in branch `store-commands`
-and need to switch to branch `database-changes` 
+and need to switch to branch `database-changes`
 but the command
 ```
 git checkout database-changes
-``` 
+```
 threw this error:
 ```
 error: Your local changes to the following files would be overwritten by checkout:
@@ -340,7 +340,7 @@ ___
 ### Example
 you are currently working on branch `store-commands-sell`
 and want to add in changes from another branch
-`store-commands-buy`. 
+`store-commands-buy`.
 
 ### Process
 make sure you are in `store-commands-sell`
