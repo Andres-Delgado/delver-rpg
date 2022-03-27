@@ -4,6 +4,7 @@ from discord import Color
 from discord.ext import commands
 
 import constants.icons as icons
+from db_providers.player_db import PlayerDb
 from player.mage import Mage
 from player.player import Player
 from player.ranger import Ranger
@@ -147,8 +148,12 @@ class PlayerUtils():
     # embed.add_field(name='Inventory (10 gold)', value='1x Lesser Stamina Potion (+5)')
     embed.set_footer(text=self.ctx.author.name, icon_url=self.ctx.author.avatar_url)
 
-    await self.message.clear_reactions()
-    await self.message.edit(embed=embed)
+    # instantiate message
+    if self.message is None:
+      self.message = await self.ctx.send(embed=embed)
+    else:
+      await self.message.clear_reactions()
+      await self.message.edit(embed=embed)
 
   def instantiate_player(self, reaction: icons) -> Player:
     if str(reaction) == str(icons.WARRIOR):
@@ -169,6 +174,7 @@ class PlayerCommands(commands.Cog):
 
   def __init__(self, bot: commands.Bot):
     self.bot = bot
+    self.playerDb = PlayerDb()
 
   @commands.command('create')
   async def create(self, ctx: commands.Context, name: str):
@@ -186,14 +192,42 @@ class PlayerCommands(commands.Cog):
     if (reaction is None): return
 
     # TODO: MOVE TO CHARACTER CLASSES
-    # initPlayer(self.ctx.author.id, class_name, self.name)
     # instantiate player object
     player = player_utils.instantiate_player(reaction)
+
+    # save the player to db
+    self.playerDb.create(player)
+
+    # display player details
     await player_utils.show_summary_embed(player)
 
-    # await ctx.send('Input `.menu` to get started!')
+  @commands.command('stats')
+  async def stats(self, ctx: commands.Context, *, name: str):
+    """display stats for you character"""
 
-    # TODO: SAVE CHAR TO DB
+    # read player values from db
+    player_tuple = self.playerDb.read(ctx.author.id, name)
+    player_name: str = player_tuple[0]
+    class_name: str = player_tuple[1]
+
+    # TODO: CLEAN THIS UP
+    # choose class reaction from class_name
+    reaction: icons = None
+    if class_name == 'Warrior':
+      reaction = icons.WARRIOR
+    if class_name == 'Mage':
+      reaction = icons.MAGE
+    if class_name == 'Rogue':
+      reaction = icons.ROGUE
+    if class_name == 'Ranger':
+      reaction = icons.RANGER
+
+    # instantiate player object
+    player_utils = PlayerUtils(self.bot, ctx, player_name)
+    player = player_utils.instantiate_player(reaction)
+
+    # display player details
+    await player_utils.show_summary_embed(player)
 
 def setup(bot: commands.Bot):
   bot.add_cog(PlayerCommands(bot))

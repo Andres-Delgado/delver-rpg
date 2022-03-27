@@ -1,9 +1,7 @@
 import constants.icons as icons
 
 class Player:
-
   def __init__(self, user_id: str, class_name: str, name: str, health: int, stamina: int, armor: int):
-    # self.id
     self.user_id = user_id
     self.class_name = class_name
     self.name = name
@@ -17,4 +15,4 @@ class Player:
     self.gold = 10
     self.experience_max = 100
     self.experience = 0
-    self.url = None
+    self.class_icon_url = None
