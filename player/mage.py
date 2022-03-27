@@ -5,7 +5,7 @@ class Mage(Player):
   def __init__(self, user_id: int, name: str):
     super().__init__(
       user_id=user_id,
-      class_name='mage',
+      class_name='Mage',
       name=name,
       health=20,
       stamina=20,
